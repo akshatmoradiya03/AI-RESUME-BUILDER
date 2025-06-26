@@ -22,4 +22,8 @@ app.use(cors(corsOptions));
 app.use("/api/users", userRouter);
 app.use("/api/resumes", resumeRouter);
 
+app.get("/", (req, res) => {
+  res.send("AI Resume Builder Backend is running!");
+});
+
 export default app;
