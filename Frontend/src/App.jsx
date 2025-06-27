@@ -7,10 +7,12 @@ import { useEffect } from "react";
 import { addUserData } from "./features/user/userFeatures";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import useScrollFadeIn from "./lib/useScrollFadeIn";
 
 function App() {
   const user = useSelector((state) => state.editUser.userData);
   const dispatch = useDispatch();
+  const [fadeRef, isVisible] = useScrollFadeIn();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,7 +39,13 @@ function App() {
   return (
     <>
       <Header user={user} />
-      <Outlet />
+      <div
+        ref={fadeRef}
+        className={`animated-fadein${isVisible ? " visible" : ""}`}
+        style={{ paddingTop: "64px" }}
+      >
+        <Outlet />
+      </div>
       <Toaster />
     </>
   );
