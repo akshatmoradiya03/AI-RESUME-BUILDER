@@ -46,7 +46,7 @@ function Header() {
   return (
     <div
       id="printHeader"
-      className="flex justify-between px-10 py-2 shadow-md items-center"
+      className="fixed top-0 left-0 w-full z-50 bg-white shadow-md flex justify-between px-10 py-2 items-center"
     >
       <Link to="/">
         <img src={logo} alt="logo" width={180} height={180} />
